@@ -14,6 +14,9 @@ function MakeNotes(props){
         content: ""
     });
 
+
+
+
     function handleChange(event){
         const {name, value} = event.target;
 
