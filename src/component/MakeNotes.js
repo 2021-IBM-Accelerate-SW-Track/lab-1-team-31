@@ -24,7 +24,6 @@ function MakeNotes(props){
             };
         });
     }
-
     function submitNote(event){
         props.onAdd(note);
 
