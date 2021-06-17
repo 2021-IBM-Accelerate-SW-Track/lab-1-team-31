@@ -9,6 +9,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #bb371a;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-circles.png");
+  padding: 0 16px;
 }
 
 code {
