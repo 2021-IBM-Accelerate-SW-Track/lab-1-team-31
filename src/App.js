@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import Note from "./component/Note";
 import MakeNotes from "./component/MakeNotes";
 
-
 import Header from "./component/header"
 import './App.css';
-<<<<<<< HEAD
 
-=======
->>>>>>> hussein
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -19,6 +15,17 @@ function App() {
       setNotes((prevNotes) => {
           return [...prevNotes, newNote];
       });
+  }
+
+  function editNote(event){
+    const {name, value} = event.target;
+
+    setNotes((prevNote) => {
+        return {
+            ...prevNote,
+            [name] : value
+        };
+    });
   }
 
   function deleteNote(id){
@@ -60,6 +67,7 @@ function App() {
                         time={noteItem.time}
                         completed={completionStatus}
                         onDelete={deleteNote}
+                        onEdit={editNote}
                         completeTask={completeTask} 
                     />
                 );

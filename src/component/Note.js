@@ -17,13 +17,10 @@ function Note(props){
         props.completeTask(props.id)
     }
 
-<<<<<<< HEAD
     function handleEdit(){
-
+        props.onEdit(props.id)
     }
 
-=======
->>>>>>> hussein
     if (props.completed === "Done") {
         return (
         
