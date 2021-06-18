@@ -5,7 +5,7 @@ import MakeNotes from "./component/MakeNotes";
 
 import Header from "./component/header"
 import './App.css';
-import { render } from "@testing-library/react";
+
 
 function App() {
   const [notes, setNotes] = useState([]);
