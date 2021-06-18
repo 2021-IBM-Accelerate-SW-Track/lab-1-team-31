@@ -40,7 +40,7 @@ code {
   word-wrap: break-word;
 }
 
-.note button , .delBtn{
+.note button {
   position: relative;
   float: right;
   margin-right: 10px;
