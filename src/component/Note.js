@@ -17,17 +17,20 @@ function Note(props){
         props.completeTask(props.id)
     }
 
+<<<<<<< HEAD
     function handleEdit(){
 
     }
 
+=======
+>>>>>>> hussein
     if (props.completed === "Done") {
         return (
         
             <div className="note">
                 <h1>{props.title}</h1>
                 <p>{props.content}</p>
-                <p>Created on: {props.date}</p>
+                <p>Created on: {props.date} at: {props.time}</p>
                 <p>Status: {props.completed}</p>
                 <Fab className="delBtn" onClick={handleClick}>< HighlightOffIcon/></Fab>
             </div>
@@ -38,7 +41,7 @@ function Note(props){
         <div className="note">
             <h1>{props.title}</h1>
             <p>{props.content}</p>
-            <p>Created on: {props.date}</p>
+            <p>Created on: {props.date} at: {props.time}</p>
             <p>Status: {props.completed}</p>
 
             <Fab  onClick={handleClick}>< HighlightOffIcon/></Fab>

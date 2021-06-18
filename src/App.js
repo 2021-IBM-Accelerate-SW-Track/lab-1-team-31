@@ -5,7 +5,10 @@ import MakeNotes from "./component/MakeNotes";
 
 import Header from "./component/header"
 import './App.css';
+<<<<<<< HEAD
 
+=======
+>>>>>>> hussein
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -54,6 +57,7 @@ function App() {
                         title={noteItem.title}
                         content={noteItem.content}
                         date={noteItem.date}
+                        time={noteItem.time}
                         completed={completionStatus}
                         onDelete={deleteNote}
                         completeTask={completeTask} 
