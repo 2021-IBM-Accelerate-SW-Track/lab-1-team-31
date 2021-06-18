@@ -7,11 +7,14 @@ import Zoom from '@material-ui/core/Zoom';
 function MakeNotes(props){
 
     const [isExpanded, setExpanded] = useState(false);
+    var today = new Date();
 
     //initial values of title and content
     const [note, setNote] = useState({
         title : "",
-        content: ""
+        content: "",
+        completed: false,
+        date: (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear()
     });
 
 
@@ -34,7 +37,9 @@ function MakeNotes(props){
         //after click "add" button, remove typed messages
         setNote({
             title: "",
-            content: ""
+            content: "",
+            completed: false,
+            date: (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear()
         })
 
         event.preventDefault(); //to prevent refreshing 
