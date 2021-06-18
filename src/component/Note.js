@@ -13,7 +13,7 @@ function Note(props){
         props.completeTask(props.id)
     }
 
-    if (props.completed == "Done") {
+    if (props.completed === "Done") {
         return (
         
             <div className="note">

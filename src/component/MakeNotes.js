@@ -51,6 +51,7 @@ function MakeNotes(props){
     return (
         <div>
             <form className="create-note">
+            
             {isExpanded && (
                 <input 
                     onChange={handleChange}
@@ -59,6 +60,7 @@ function MakeNotes(props){
                     placeholder="Title"
                 />
             )}
+
                 <textarea 
                     onClick={expand}
                     onChange={handleChange}
@@ -67,9 +69,12 @@ function MakeNotes(props){
                     placeholder="Take a note.."
                     row={isExpanded ? 3 : 1}
                 />
+
                 <Zoom in={isExpanded}>
                     <Fab onClick={submitNote}><AddIcon /></Fab> 
                 </Zoom>
+
+
             </form>
         </div>
     );

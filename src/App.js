@@ -29,7 +29,7 @@ function App() {
   function completeTask(id){
     setCount(count + 1)
     {notes.map((noteItem, index) => {
-        if (index == id) {
+        if (index === id) {
             return (
                 noteItem.completed = true
             ); 
