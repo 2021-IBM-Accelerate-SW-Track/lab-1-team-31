@@ -14,7 +14,8 @@ function MakeNotes(props){
         title : "",
         content: "",
         completed: false,
-        date: (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear()
+        time: today.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
+        date: today.toLocaleDateString()
     });
 
 
@@ -39,7 +40,8 @@ function MakeNotes(props){
             title: "",
             content: "",
             completed: false,
-            date: (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear()
+            time: today.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
+            date: today.toLocaleDateString()
         })
 
         event.preventDefault(); //to prevent refreshing 

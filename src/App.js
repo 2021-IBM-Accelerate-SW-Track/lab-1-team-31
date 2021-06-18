@@ -5,7 +5,6 @@ import MakeNotes from "./component/MakeNotes";
 
 import Header from "./component/header"
 import './App.css';
-import { render } from "@testing-library/react";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -29,7 +28,7 @@ function App() {
   function completeTask(id){
     setCount(count + 1)
     {notes.map((noteItem, index) => {
-        if (index == id) {
+        if (index === id) {
             return (
                 noteItem.completed = true
             ); 
@@ -54,6 +53,7 @@ function App() {
                         title={noteItem.title}
                         content={noteItem.content}
                         date={noteItem.date}
+                        time={noteItem.time}
                         completed={completionStatus}
                         onDelete={deleteNote}
                         completeTask={completeTask} 
