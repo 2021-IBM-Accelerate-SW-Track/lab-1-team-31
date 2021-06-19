@@ -19,7 +19,7 @@ const TodoForm = ({addTodo}) => {
 					value = {text} onChange = {e => setText(e.target.value)}
 					data-testid = "new-item-input" />
 					<Button variant = "contained" color = "primary" type = "submit"
-					style = {{marginTop: 5}}>
+					style = {{marginTop: 5}} data-testid = "new-item-button">
 						<AddIcon/> Add
 					</Button>
 				</FormControl>
