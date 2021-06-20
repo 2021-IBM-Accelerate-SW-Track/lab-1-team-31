@@ -9,23 +9,23 @@ import './App.css';
 function App() {
   const [notes, setNotes] = useState([]);
   const [count, setCount] = useState(0);
+  const [isEditing, setIsEditing] = useState(false);
+  
+  function handleEditChange(event){
+    setNotes({
+      ...notes, 
+    })
+  }  
 
-    
   function addNote(newNote){
       setNotes((prevNotes) => {
           return [...prevNotes, newNote];
       });
   }
 
-  function editNote(event){
-    const {name, value} = event.target;
-
-    setNotes((prevNote) => {
-        return {
-            ...prevNote,
-            [name] : value
-        };
-    });
+  function editNote(notes){
+    setIsEditing(true);
+    setNotes({...notes});
   }
 
   function deleteNote(id){
@@ -37,15 +37,17 @@ function App() {
   }
 
   function completeTask(id){
-    setCount(count + 1)
-    {notes.map((noteItem, index) => {
-        if (index === id) {
-            return (
-                noteItem.completed = true
-            ); 
-        }
-    })}
-  }
+    setCount(count + 1);
+
+    // eslint-disable-next-line array-callback-return
+    notes.map((noteItem, index) => {
+      if (index === id) {
+        return (
+          noteItem.completed = true
+       ); 
+      }
+    }) 
+}
 
   return (
     <div className="App">
@@ -61,7 +63,7 @@ function App() {
                     <Note
                         key={index}
                         id={index}
-                        title={noteItem.title}
+                        //title={noteItem.title}
                         content={noteItem.content}
                         date={noteItem.date}
                         time={noteItem.time}
