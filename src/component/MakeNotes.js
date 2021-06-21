@@ -10,6 +10,7 @@ function MakeNotes(props){
     const [isExpanded, setExpanded] = useState(false);
     var today = new Date();
 
+    //initial values 
     const [note, setNote] = useState({
         content: "",
         completed: false,
