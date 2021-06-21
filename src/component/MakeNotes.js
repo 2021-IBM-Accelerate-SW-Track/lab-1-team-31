@@ -86,25 +86,26 @@ function MakeNotes({onAdd, noteList}){
                     placeholder="Title"
                 />
             )} */}
-
-                <textarea 
-                    data-testid="new-item-input"
-                    onClick={expand}
-                    onChange={handleChange}
-                    name="content"
-                    value={note.content}
-                    placeholder="Take a note.."
-                    row={isExpanded ? 2 : 1}
-                />
+               <div data-testid="new-item-input">
+                    <textarea 
+                        onClick={expand}
+                        onChange={handleChange}
+                        name="content"
+                        value={note.content}
+                        placeholder="Take a note.."
+                        row={isExpanded ? 2 : 1}
+                    />
+               </div>
                     
-                 <div>
+               <div>
                     {exist && 'Note Already Exist'}
                     {field && 'Please Add A Note'}
+               </div>
+                <div  data-testid="new-item-button">
+                    <Zoom in={isExpanded}>
+                        <Fab onClick={submitNote}><AddIcon /></Fab> 
+                    </Zoom>
                 </div>
-
-                <Zoom in={isExpanded}>
-                    <Fab data-testid="new-item-button" onClick={submitNote}><AddIcon /></Fab> 
-                </Zoom>
 
 
             </form>
