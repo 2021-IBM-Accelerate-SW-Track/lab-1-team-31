@@ -8,7 +8,8 @@ function MakeNotes(props){
 
     const [isExpanded, setExpanded] = useState(false);
 
-    //initial values of title and content
+    //initial values 
+
     const [note, setNote] = useState({
         title : "",
         content: ""
