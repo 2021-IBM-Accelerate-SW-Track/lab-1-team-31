@@ -1,51 +1,47 @@
-import React, {useState} from "react";
-import './App.css';
-import DenseAppBar from "./appBar";
-import TodoForm from './component/todo/todoForm';
-import TodoList from './component/todo/todoList';
-import { v4 as uuid } from 'uuid';
+import React, { useState } from "react";
+import Note from "./component/Note";
+import MakeNotes from "./component/MakeNotes";
 
-function buttonHandler() {
-  alert('clicked')
-}
+
+import Header from "./component/header"
+import './App.css';
 
 function App() {
-  var today = new Date();
-  const [note, setNote] = useState([]);
+  const [notes, setNotes] = useState([]);
 
-  const addTodo = (text) => {
-    const newTodo = {
-      id: uuid(),
-      title: text,
-      content: "",
-      completed: false,
-      date: (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear(),
-      time: today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
-    }
-    setNote([...note, newTodo]);
+    
+  function addNote(newNote){
+      setNotes((prevNotes) => {
+          return [...prevNotes, newNote];
+      });
   }
 
-    const checkTodo = (id) => {
-      setNote(note.map(task => {
-        if (id === task.id) task.completed = !task.completed;
-        return task;
-      }))
-    }
+  function deleteNote(id){
+      setNotes((prevNotes) => {
+          return prevNotes.filter((noteItem, index) => {
+              return index !== id;
+          });
+      });
+  }
 
-    const deleteTodo = (id) => {
-      setNote(note.filter(todo => todo.id !== id))
-    }
+  return (
+    <div className="App">
+    <Header/>
 
-		return (
-			<div className="App">
-				<DenseAppBar />
-				<br />
-				<TodoForm addTodo = {addTodo}/>
-				<TodoList note = {note} checkTodo = {checkTodo} deleteTodo = {deleteTodo}/>
-			</div>
-		);
-};
-
-
+    <MakeNotes onAdd={addNote} />
+            {notes.map((noteItem, index) => {
+                return (
+                    <Note
+                        key={index}
+                        id={index}
+                        title={noteItem.title}
+                        content={noteItem.content}
+                        onDelete={deleteNote}
+                    />
+                );
+            })}
+    </div>
+  );
+}
 
 export default App;
