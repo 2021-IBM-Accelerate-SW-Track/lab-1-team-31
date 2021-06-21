@@ -54,38 +54,17 @@ function MakeNotes(props){
       }
     return (
         <div>
-            {/* <form className="create-note" onSubmit = {submitNote}>
-                <TextField label = "eg. make coffee" required = {true} 
-					value = {note.content} onChange = {handleChange}
-					data-testid = "new-item-input" onClick={expand} row={isExpanded ? 2 : 1}/>
-                <textarea 
-                    type = "input"
-                    required = {true}
-                    onClick={expand}
-                    onChange={handleChange}
-                    name="content"
-                    value={note.content}
-                    placeholder="Take a note.."
-                    row={isExpanded ? 2 : 1}
-                    data-testid = "new-item-input"
-                />
-
-                <Zoom in={isExpanded}>
-                   <Button type = "submit" data-testid = "new-item-button"><AddIcon /> </Button>
-                </Zoom>
-
-            </form> */}
-
 			<form className="create-note" onSubmit = {submitNote}>
 				<FormControl fullWidth = {true}>
-					<TextField label = "eg. make coffee" 
+					<TextField 
                         required = {true}
                         onClick={expand}
                         onChange={handleChange}
                         name="content"
                         value={note.content}
-                        placeholder="Take a note.."
+                        placeholder="Create task..."
                         row={isExpanded ? 2 : 1}
+                        InputProps={{ disableUnderline: true }}
                         data-testid = "new-item-input"
                     />
 					<Button 
