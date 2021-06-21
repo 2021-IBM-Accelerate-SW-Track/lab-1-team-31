@@ -9,10 +9,8 @@ function MakeNotes({onAdd, noteList}){
     const [isExpanded, setExpanded] = useState(false);
     var today = new Date();
     
-    // JAY'S CODE STARTS...
     const [exist, setExist] = useState(false)
     const [field, checkField] = useState(false)
-    // JAY'S CODE ENDS...
 
     //initial values 
     const [note, setNote] = useState({
@@ -38,7 +36,6 @@ function MakeNotes({onAdd, noteList}){
     }
 
     function submitNote(event){
-        // JAY'S CODE STARTS...
         if (!note.content){
             checkField(true)
             setExist(false)
@@ -54,7 +51,6 @@ function MakeNotes({onAdd, noteList}){
             }
             setExist(false)
         }
-        // JAY'S CODE ENDS...
         
         onAdd(note);
 
