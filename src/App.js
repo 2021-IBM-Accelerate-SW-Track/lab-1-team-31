@@ -1,47 +1,51 @@
-import React, { useState } from "react";
-import Note from "./component/Note";
-import MakeNotes from "./component/MakeNotes";
-
-
-import Header from "./component/header"
+import React, {useState} from "react";
 import './App.css';
+import DenseAppBar from "./appBar";
+import TodoForm from './component/todo/todoForm';
+import TodoList from './component/todo/todoList';
+import { v4 as uuid } from 'uuid';
+
+function buttonHandler() {
+  alert('clicked')
+}
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  var today = new Date();
+  const [note, setNote] = useState([]);
 
-    
-  function addNote(newNote){
-      setNotes((prevNotes) => {
-          return [...prevNotes, newNote];
-      });
+  const addTodo = (text) => {
+    const newTodo = {
+      id: uuid(),
+      title: text,
+      content: "",
+      completed: false,
+      date: (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear(),
+      time: today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+    }
+    setNote([...note, newTodo]);
   }
 
-  function deleteNote(id){
-      setNotes((prevNotes) => {
-          return prevNotes.filter((noteItem, index) => {
-              return index !== id;
-          });
-      });
-  }
+    const checkTodo = (id) => {
+      setNote(note.map(task => {
+        if (id === task.id) task.completed = !task.completed;
+        return task;
+      }))
+    }
 
-  return (
-    <div className="App">
-    <Header/>
+    const deleteTodo = (id) => {
+      setNote(note.filter(todo => todo.id !== id))
+    }
 
-    <MakeNotes onAdd={addNote} />
-            {notes.map((noteItem, index) => {
-                return (
-                    <Note
-                        key={index}
-                        id={index}
-                        title={noteItem.title}
-                        content={noteItem.content}
-                        onDelete={deleteNote}
-                    />
-                );
-            })}
-    </div>
-  );
-}
+		return (
+			<div className="App">
+				<DenseAppBar />
+				<br />
+				<TodoForm addTodo = {addTodo}/>
+				<TodoList note = {note} checkTodo = {checkTodo} deleteTodo = {deleteTodo}/>
+			</div>
+		);
+};
+
+
 
 export default App;
