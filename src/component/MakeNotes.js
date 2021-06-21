@@ -4,10 +4,15 @@ import Fab from '@material-ui/core/Fab';
 import Zoom from '@material-ui/core/Zoom';
 
 
-function MakeNotes(props){
+function MakeNotes({onAdd, noteList}){
 
     const [isExpanded, setExpanded] = useState(false);
     var today = new Date();
+    
+    // JAY'S CODE STARTS...
+    const [exist, setExist] = useState(false)
+    const [field, checkField] = useState(false)
+    // JAY'S CODE ENDS...
 
     //initial values 
     const [note, setNote] = useState({
@@ -33,7 +38,25 @@ function MakeNotes(props){
     }
 
     function submitNote(event){
-        props.onAdd(note);
+        // JAY'S CODE STARTS...
+        if (!note.content){
+            checkField(true)
+            setExist(false)
+            return
+        }
+        checkField(false)
+
+        for (const eachNote of noteList){
+            if (note.content.toLowerCase() === eachNote.content.toLowerCase()){
+                setExist(true)
+                checkField(false)
+                return
+            }
+            setExist(false)
+        }
+        // JAY'S CODE ENDS...
+        
+        onAdd(note);
 
 
         //after click "add" button, remove typed messages
