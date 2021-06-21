@@ -95,6 +95,11 @@ function MakeNotes({onAdd, noteList}){
                     placeholder="Take a note.."
                     row={isExpanded ? 2 : 1}
                 />
+                    
+                 <div>
+                    {exist && 'Note Already Exist'}
+                    {field && 'Please Add A Note'}
+                </div>
 
                 <Zoom in={isExpanded}>
                     <Fab onClick={submitNote}><AddIcon /></Fab> 
