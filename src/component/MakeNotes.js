@@ -9,9 +9,9 @@ function MakeNotes(props){
     const [isExpanded, setExpanded] = useState(false);
     var today = new Date();
 
-    //initial values of title and content
+    //initial values 
     const [note, setNote] = useState({
-        title : "",
+       // title : "",
         content: "",
         completed: false,
         time: today.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
@@ -31,13 +31,14 @@ function MakeNotes(props){
             };
         });
     }
+
     function submitNote(event){
         props.onAdd(note);
 
 
         //after click "add" button, remove typed messages
         setNote({
-            title: "",
+            //title: "",
             content: "",
             completed: false,
             time: today.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
@@ -53,25 +54,30 @@ function MakeNotes(props){
     return (
         <div>
             <form className="create-note">
-            {isExpanded && (
+            
+            {/* {isExpanded && (
                 <input 
                     onChange={handleChange}
                     name="title"
                     value={note.title}
                     placeholder="Title"
                 />
-            )}
+            )} */}
+
                 <textarea 
                     onClick={expand}
                     onChange={handleChange}
                     name="content"
                     value={note.content}
                     placeholder="Take a note.."
-                    row={isExpanded ? 3 : 1}
+                    row={isExpanded ? 2 : 1}
                 />
+
                 <Zoom in={isExpanded}>
                     <Fab onClick={submitNote}><AddIcon /></Fab> 
                 </Zoom>
+
+
             </form>
         </div>
     );
