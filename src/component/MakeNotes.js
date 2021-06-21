@@ -54,9 +54,12 @@ function MakeNotes(props){
       }
     return (
         <div>
-            <form className="create-note" onSubmit = {submitNote}>
-                
+            {/* <form className="create-note" onSubmit = {submitNote}>
+                <TextField label = "eg. make coffee" required = {true} 
+					value = {note.content} onChange = {handleChange}
+					data-testid = "new-item-input" onClick={expand} row={isExpanded ? 2 : 1}/>
                 <textarea 
+                    type = "input"
                     required = {true}
                     onClick={expand}
                     onChange={handleChange}
@@ -68,11 +71,32 @@ function MakeNotes(props){
                 />
 
                 <Zoom in={isExpanded}>
-                    <Fab onClick={submitNote} data-testid = "new-item-button"><AddIcon /></Fab> 
+                   <Button type = "submit" data-testid = "new-item-button"><AddIcon /> </Button>
                 </Zoom>
 
+            </form> */}
 
-            </form>
+			<form className="create-note" onSubmit = {submitNote}>
+				<FormControl fullWidth = {true}>
+					<TextField label = "eg. make coffee" 
+                        required = {true}
+                        onClick={expand}
+                        onChange={handleChange}
+                        name="content"
+                        value={note.content}
+                        placeholder="Take a note.."
+                        row={isExpanded ? 2 : 1}
+                        data-testid = "new-item-input"
+                    />
+					<Button 
+                        variant = "contained" 
+                        type = "submit"
+                        style = {{marginTop: 5}} 
+                        data-testid = "new-item-button">
+						<AddIcon/>
+					</Button>
+				</FormControl>
+			</form>
         </div>
     );
 }
