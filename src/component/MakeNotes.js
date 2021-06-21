@@ -87,7 +87,7 @@ function MakeNotes({onAdd, noteList}){
                 />
             )} */}
                <div data-testid="new-item-input">
-                    <textarea 
+                    <input 
                         onClick={expand}
                         onChange={handleChange}
                         name="content"
