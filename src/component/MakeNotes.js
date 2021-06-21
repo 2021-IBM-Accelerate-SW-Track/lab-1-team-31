@@ -2,6 +2,7 @@ import React , {useState} from "react";
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Zoom from '@material-ui/core/Zoom';
+import {FormControl, Container, TextField, Button} from '@material-ui/core'
 
 
 function MakeNotes(props){
@@ -53,28 +54,21 @@ function MakeNotes(props){
       }
     return (
         <div>
-            <form className="create-note">
-            
-            {/* {isExpanded && (
-                <input 
-                    onChange={handleChange}
-                    name="title"
-                    value={note.title}
-                    placeholder="Title"
-                />
-            )} */}
-
+            <form className="create-note" onSubmit = {submitNote}>
+                
                 <textarea 
+                    required = {true}
                     onClick={expand}
                     onChange={handleChange}
                     name="content"
                     value={note.content}
                     placeholder="Take a note.."
                     row={isExpanded ? 2 : 1}
+                    data-testid = "new-item-input"
                 />
 
                 <Zoom in={isExpanded}>
-                    <Fab onClick={submitNote}><AddIcon /></Fab> 
+                    <Fab onClick={submitNote} data-testid = "new-item-button"><AddIcon /></Fab> 
                 </Zoom>
 
 
