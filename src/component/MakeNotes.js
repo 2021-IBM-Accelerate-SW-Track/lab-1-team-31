@@ -88,6 +88,7 @@ function MakeNotes({onAdd, noteList}){
             )} */}
 
                 <textarea 
+                    data-testid="new-item-input"
                     onClick={expand}
                     onChange={handleChange}
                     name="content"
@@ -102,7 +103,7 @@ function MakeNotes({onAdd, noteList}){
                 </div>
 
                 <Zoom in={isExpanded}>
-                    <Fab onClick={submitNote}><AddIcon /></Fab> 
+                    <Fab data-testid="new-item-button" onClick={submitNote}><AddIcon /></Fab> 
                 </Zoom>
 
 
