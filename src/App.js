@@ -53,7 +53,7 @@ function App() {
     <div className="App">
     <Header/>
 
-    <MakeNotes onAdd={addNote} />
+    <MakeNotes onAdd={addNote} noteList = {notes}/>
             {notes.map((noteItem, index) => {
                 let completionStatus = "Due"
                 if (noteItem.completed) {
