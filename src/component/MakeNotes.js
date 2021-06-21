@@ -10,9 +10,7 @@ function MakeNotes(props){
     const [isExpanded, setExpanded] = useState(false);
     var today = new Date();
 
-    //initial values 
     const [note, setNote] = useState({
-       // title : "",
         content: "",
         completed: false,
         time: today.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
