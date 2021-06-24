@@ -40,7 +40,7 @@ code {
   word-wrap: break-word;
 }
 
-.note button {
+.note button , .delBtn{
   position: relative;
   float: right;
   margin-right: 10px;
@@ -76,7 +76,7 @@ form.create-note textarea {
 }
 form.create-note button  {
   position: absolute;
-  right: 28px;
+  right: 18px;
   bottom: -18px;
   background: #7D5A50;
   color: #E5B299;

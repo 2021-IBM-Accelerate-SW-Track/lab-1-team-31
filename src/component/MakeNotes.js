@@ -2,6 +2,7 @@ import React , {useState} from "react";
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Zoom from '@material-ui/core/Zoom';
+import {FormControl, Container, TextField, Button} from '@material-ui/core'
 
 
 function MakeNotes({onAdd, noteList}){
@@ -14,7 +15,6 @@ function MakeNotes({onAdd, noteList}){
 
     //initial values 
     const [note, setNote] = useState({
-       // title : "",
         content: "",
         completed: false,
         time: today.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}),
@@ -84,6 +84,7 @@ function MakeNotes({onAdd, noteList}){
             )} */}
                <div data-testid="new-item-input">
                     <input 
+
                         onClick={expand}
                         onChange={handleChange}
                         name="content"
@@ -105,6 +106,7 @@ function MakeNotes({onAdd, noteList}){
 
 
             </form>
+
         </div>
     );
 }
