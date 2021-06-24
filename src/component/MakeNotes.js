@@ -5,10 +5,13 @@ import Zoom from '@material-ui/core/Zoom';
 import {FormControl, Container, TextField, Button} from '@material-ui/core'
 
 
-function MakeNotes(props){
+function MakeNotes({onAdd, noteList}){
 
     const [isExpanded, setExpanded] = useState(false);
     var today = new Date();
+    
+    const [exist, setExist] = useState(false)
+    const [field, checkField] = useState(false)
 
     //initial values 
     const [note, setNote] = useState({
@@ -33,7 +36,23 @@ function MakeNotes(props){
     }
 
     function submitNote(event){
-        props.onAdd(note);
+        if (!note.content){
+            checkField(true)
+            setExist(false)
+            return
+        }
+        checkField(false)
+
+        for (const eachNote of noteList){
+            if (note.content.toLowerCase() === eachNote.content.toLowerCase()){
+                setExist(true)
+                checkField(false)
+                return
+            }
+            setExist(false)
+        }
+        
+        onAdd(note);
 
 
         //after click "add" button, remove typed messages
@@ -53,28 +72,41 @@ function MakeNotes(props){
       }
     return (
         <div>
-			<form className="create-note" onSubmit = {submitNote}>
-				<FormControl fullWidth = {true}>
-					<TextField 
-                        required = {true}
+            <form className="create-note">
+            
+            {/* {isExpanded && (
+                <input 
+                    onChange={handleChange}
+                    name="title"
+                    value={note.title}
+                    placeholder="Title"
+                />
+            )} */}
+               <div data-testid="new-item-input">
+                    <input 
+
                         onClick={expand}
                         onChange={handleChange}
                         name="content"
                         value={note.content}
-                        placeholder="Create task..."
+                        placeholder="Take a note.."
                         row={isExpanded ? 2 : 1}
-                        InputProps={{ disableUnderline: true }}
-                        data-testid = "new-item-input"
                     />
-					<Button 
-                        variant = "contained" 
-                        type = "submit"
-                        style = {{marginTop: 5}} 
-                        data-testid = "new-item-button">
-						<AddIcon/>
-					</Button>
-				</FormControl>
-			</form>
+               </div>
+                    
+               <div>
+                    {exist && 'Note Already Exist'}
+                    {field && 'Please Add A Note'}
+               </div>
+                <div  data-testid="new-item-button">
+                    <Zoom in={isExpanded}>
+                        <Fab onClick={submitNote}><AddIcon /></Fab> 
+                    </Zoom>
+                </div>
+
+
+            </form>
+
         </div>
     );
 }
